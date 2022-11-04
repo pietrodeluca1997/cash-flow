@@ -1,6 +1,6 @@
 ## Fluxo de Caixa - [Pietro Romano]
 
-## Descrição
+## Descrição:
 Uma aplicação responsável pelo gerenciamento de fluxo de caixa, utilizando boas práticas de arquitetura de software, além da implementação do **Design Pattern ["Mediator"**] de uma forma **totalmente customizada!**
 
 
@@ -10,7 +10,7 @@ Todas as aplicações foram desenvolvidas em **.NET Core 6.0** e rodam dentro de
 
 
 ## Aplicações:
-* API de Identitade - Autenticação e gerenciamento de usuários;
+* API de Identidade - Autenticação e gerenciamento de usuários;
 * API de Contas - Gerenciamento de contas e de gerentes de conta;
 * API de Transações - Efetuar movimentações financeiras em uma conta;
 * API de Relatórios - Disponibilização de relatórios;
@@ -24,6 +24,6 @@ Todas as aplicações foram desenvolvidas em **.NET Core 6.0** e rodam dentro de
 
 
 ## Bibliotecas:
-* [Ocelot](https://ocelot.readthedocs.io/en/latest/introduction/gettingstarted.html) - Encaminhamento de Tráfego externo para os serviços apropriados internos;
+* [Ocelot](https://ocelot.readthedocs.io/en/latest/introduction/gettingstarted.html) - Encaminhamento de tráfego externo para os serviços apropriados internos;
 * [EntityFramework](https://learn.microsoft.com/en-us/ef/) - ORM para comunicação com o PostgreSQL;
 * [MassTransit](https://masstransit-project.com/) - Camada de abstração para gerenciamento de mensagerias;
