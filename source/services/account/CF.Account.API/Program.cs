@@ -23,6 +23,7 @@ appBuilder.Services.AddRelationalDatabase(appBuilder.Configuration);
 appBuilder.Services.AddApplicationSettings(appBuilder.Configuration);
 appBuilder.Services.AddApplicationServices();
 appBuilder.Services.AddMessageBroker(appBuilder.Configuration);
+appBuilder.Services.AddMemoryDatabase(appBuilder.Configuration);
 
 WebApplication app = appBuilder.Build();
 

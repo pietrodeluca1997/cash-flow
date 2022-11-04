@@ -1,6 +1,6 @@
 ﻿using CF.Account.API.Commands.AccountManagerCommands;
 using CF.Account.API.Contracts.RelationalDatabase;
-using CF.Account.API.Services.Contracts;
+using CF.Account.API.Contracts.Services;
 using CF.Core.Messages.IntegrationEvents;
 using CF.CustomMediator.Contracts;
 

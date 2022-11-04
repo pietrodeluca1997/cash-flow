@@ -1,11 +1,13 @@
 ﻿using CF.Account.API.Contracts.RelationalDatabase;
+using CF.Account.API.Contracts.Services;
+using CF.Account.API.Data.MemoryDatabase;
 using CF.Account.API.Data.RelationalDatabase;
 using CF.Account.API.EventBusConsumers;
 using CF.Account.API.Services;
-using CF.Account.API.Services.Contracts;
 using CF.Account.API.Settings;
 using CF.Core.API.EventBusPublishers;
 using CF.Core.Contracts.MessageBroker;
+using CF.Core.Repositories;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +25,20 @@ namespace CF.Account.API.Configuration
         }
 
         /// <summary>
+        ///     Inject in memory database into DI Container for distributed cache
+        /// </summary>
+        /// <param name="services">Extension method</param>
+        public static void AddMemoryDatabase(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration["MemoryDatabaseSettings:ConnectionString"];
+            });
+
+            services.AddScoped<IMemoryDatabaseRepository, RedisBaseRepository>();
+        }
+
+        /// <summary>
         ///     Add listener/consumers for message broker
         /// </summary>
         /// <param name="services">Extension method</param>
@@ -36,6 +52,8 @@ namespace CF.Account.API.Configuration
             services.AddMassTransit(massTransitconfiguration =>
             {
                 massTransitconfiguration.AddConsumer<UserCreatedConsumer>();
+                massTransitconfiguration.AddConsumer<CreditTransactionRequestedConsumer>();
+                massTransitconfiguration.AddConsumer<DebitTransactionRequestedConsumer>();
 
                 massTransitconfiguration.UsingRabbitMq((rabbitMqContext, rabbitMqConfiguration) =>
                 {
@@ -44,6 +62,16 @@ namespace CF.Account.API.Configuration
                     rabbitMqConfiguration.ReceiveEndpoint(configuration["EventBusSettings:UserCreatedQueue"], queueConfig =>
                     {
                         queueConfig.ConfigureConsumer<UserCreatedConsumer>(rabbitMqContext);
+                    });
+
+                    rabbitMqConfiguration.ReceiveEndpoint(configuration["EventBusSettings:CreditTransactionRequestedQueue"], queueConfig =>
+                    {
+                        queueConfig.ConfigureConsumer<CreditTransactionRequestedConsumer>(rabbitMqContext);
+                    });
+
+                    rabbitMqConfiguration.ReceiveEndpoint(configuration["EventBusSettings:DebitTransactionRequestedQueue"], queueConfig =>
+                    {
+                        queueConfig.ConfigureConsumer<DebitTransactionRequestedConsumer>(rabbitMqContext);
                     });
                 });
             });
@@ -57,6 +85,7 @@ namespace CF.Account.API.Configuration
         public static void AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IAccountManagerServices, AccountManagerServices>();
+            services.AddScoped<IAccountServices, AccountServices>();
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
 ﻿using CF.Core.DTO;
+using CF.Transactions.API.Contracts.Services;
+using CF.Transactions.API.DTO.Request;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CF.Transactions.API.Controllers
@@ -9,6 +11,14 @@ namespace CF.Transactions.API.Controllers
     [Produces("application/json")]
     public class TransactionController : ControllerBase
     {
+        private readonly ITransactionServices _transactionServices;
+
+        public TransactionController(ITransactionServices transactionServices)
+        {
+            _transactionServices = transactionServices;
+        }
+
+
         /// <summary>
         /// Receives a new debit transaction for further processment.
         /// </summary>
@@ -19,7 +29,8 @@ namespace CF.Transactions.API.Controllers
         ///
         ///     POST api/transactions/debit
         ///     {   
-        ///         
+        ///         "moneyAmount": 100.0,
+        ///         "description": "Transaction"
         ///     }        
         /// </remarks>  
         /// <response code="202">If process has been accepted for further processment</response>
@@ -28,9 +39,12 @@ namespace CF.Transactions.API.Controllers
         [HttpPost("debit")]
         [ProducesResponseType(typeof(SuccessResponseDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Debit()
+        public async Task<IActionResult> Debit(CreateNewTransactionRequestDTO createNewTransactionRequestDTO)
         {
-            throw new NotImplementedException();
+            BaseResponseDTO responseDTO = await _transactionServices.Debit(createNewTransactionRequestDTO);
+
+            return StatusCode((int)responseDTO.StatusCode, responseDTO);
+
         }
 
         /// <summary>
@@ -43,7 +57,8 @@ namespace CF.Transactions.API.Controllers
         ///
         ///     POST api/transactions/credit
         ///     {   
-        ///         
+        ///         "moneyAmount": 100.0,
+        ///         "description": "Transaction"
         ///     }        
         /// </remarks>  
         /// <response code="202">If process has been accepted for further processment</response>
@@ -52,9 +67,11 @@ namespace CF.Transactions.API.Controllers
         [HttpPost("credit")]
         [ProducesResponseType(typeof(SuccessResponseDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Credit()
+        public async Task<IActionResult> Credit(CreateNewTransactionRequestDTO createNewTransactionRequestDTO)
         {
-            throw new NotImplementedException();
+            BaseResponseDTO responseDTO = await _transactionServices.Credit(createNewTransactionRequestDTO);
+
+            return StatusCode((int)responseDTO.StatusCode, responseDTO);
         }
     }
 }

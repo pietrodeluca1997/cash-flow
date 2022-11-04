@@ -1,5 +1,7 @@
 ﻿using CF.Core.API.EventBusPublishers;
 using CF.Core.Contracts.MessageBroker;
+using CF.Transactions.API.Contracts.Services;
+using CF.Transactions.API.Services;
 using CF.Transactions.API.Settings;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
@@ -44,7 +46,7 @@ namespace CF.Transactions.API.Configuration
 
         public static void AddApplicationServices(this IServiceCollection services)
         {
-
+            services.AddScoped<ITransactionServices, TransactionServices>();
         }
 
         /// <summary>

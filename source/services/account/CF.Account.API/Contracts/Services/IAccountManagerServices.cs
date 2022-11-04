@@ -1,6 +1,6 @@
 ﻿using CF.Core.Messages.IntegrationEvents;
 
-namespace CF.Account.API.Services.Contracts
+namespace CF.Account.API.Contracts.Services
 {
     public interface IAccountManagerServices
     {

@@ -31,4 +31,36 @@ services:
           RABBITMQ_DEFAULT_PASS: "guest"
     ports:
         - "5672:5672"
-        - "15672:15672"        
+        - "15672:15672"       
+        
+  mongo: 
+    container_name: mongo-container
+    image: mongo
+    restart: always
+    environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+        - "27017:27017"
+
+  redis:
+    container_name: redis-container
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  #identity-api:
+  #  image: "pietrodeluca1997/cash-flow-identity-api:latest"
+  #  container_name: "cash-flow-identity-api-container"
+  #  build:
+  #      context: "../../"
+  #      dockerfile: "./source/services/identity/CF.Identity.API/Dockerfile"
+  #  environment:
+  #      - ASPNETCORE_ENVIRONMENT=Production
+  #      - ASPNETCORE_URLS=http://*:5001
+  #  ports:
+  #      - "5001:5001"
+  #  depends_on:
+  #      - postgreSQL
+  #      - rabbitmq
