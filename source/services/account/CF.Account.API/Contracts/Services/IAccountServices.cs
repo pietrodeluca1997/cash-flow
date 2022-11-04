@@ -1,4 +1,5 @@
-﻿using CF.Core.Messages.IntegrationEvents;
+﻿using CF.Core.DTO;
+using CF.Core.Messages.IntegrationEvents;
 
 namespace CF.Account.API.Contracts.Services
 {
@@ -6,5 +7,6 @@ namespace CF.Account.API.Contracts.Services
     {
         Task Credit(CreditTransactionRequestedEvent @event);
         Task Debit(DebitTransactionRequestedEvent @event);
+        BaseResponseDTO GetAccount();
     }
 }

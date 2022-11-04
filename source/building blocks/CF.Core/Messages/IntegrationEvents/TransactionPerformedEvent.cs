@@ -13,6 +13,11 @@ namespace CF.Core.Messages.IntegrationEvents
         public string TransactionDescription { get; set; }
         public decimal TransactionAmount { get; set; }
 
+        public TransactionPerformedEvent()
+        {
+
+        }
+
         public TransactionPerformedEvent(ETransactionType eTransactionType)
         {
             TransactionDate = DateTime.Now;

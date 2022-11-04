@@ -23,6 +23,7 @@ appBuilder.Services.AddQueryDatabase(appBuilder.Configuration);
 appBuilder.Services.AddApplicationSettings(appBuilder.Configuration);
 appBuilder.Services.AddApplicationServices();
 appBuilder.Services.AddMessageBroker(appBuilder.Configuration);
+appBuilder.Services.AddQueryDatabase();
 
 WebApplication app = appBuilder.Build();
 

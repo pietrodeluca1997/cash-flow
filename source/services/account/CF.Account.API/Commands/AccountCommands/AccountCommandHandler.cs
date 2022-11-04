@@ -23,9 +23,7 @@ namespace CF.Account.API.Commands.AccountCommands
             {
                 Entities.Account defaultAccount = _repositoryManager.AccountRepository.GetById(1, trackChanges: false).First();
 
-                decimal accountNewMoneyAmount = defaultAccount.MoneyAmount - requestMessage.MoneyAmount;
-
-                if (accountNewMoneyAmount < 0)
+                if (!defaultAccount.Debit(requestMessage.MoneyAmount))
                 {
                     //Insufficient funds
                     AccountInsufficientFundsEvent accountInsufficientFundsEvent = new();
@@ -34,8 +32,6 @@ namespace CF.Account.API.Commands.AccountCommands
                 }
                 else
                 {
-                    defaultAccount.MoneyAmount = accountNewMoneyAmount;
-
                     _repositoryManager.AccountRepository.Update(defaultAccount);
 
                     _repositoryManager.Save();
@@ -59,9 +55,7 @@ namespace CF.Account.API.Commands.AccountCommands
             {
                 Entities.Account defaultAccount = _repositoryManager.AccountRepository.GetById(1, trackChanges: false).First();
 
-                decimal accountNewMoneyAmount = defaultAccount.MoneyAmount + requestMessage.MoneyAmount;
-
-                defaultAccount.MoneyAmount = accountNewMoneyAmount;
+                defaultAccount.Credit(requestMessage.MoneyAmount);
 
                 _repositoryManager.AccountRepository.Update(defaultAccount);
 
