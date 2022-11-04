@@ -8,6 +8,10 @@ Foi escolhida a **arquitetura de microserviços** pela finalidade do projeto e s
 
 Todas as aplicações foram desenvolvidas em **.NET Core 6.0** e rodam dentro de **containers Docker** junto com todos os serviços depentes.
 
+## Arquitetura da Solução
+</br>
+<img src="https://github.com/pietrodeluca1997/cash-flow/blob/master/documents/Cash%20Flow%20Solution%20Architecture.drawio.png?raw=true" />
+</br>
 
 ## Aplicações:
 * API de Identidade - Autenticação e gerenciamento de usuários;
