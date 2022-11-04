@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\building blocks\CF.Core\CF.Core.csproj" />
     <ProjectReference Include="..\..\..\building blocks\CF.CustomMediator\CF.CustomMediator.csproj" />
   </ItemGroup>

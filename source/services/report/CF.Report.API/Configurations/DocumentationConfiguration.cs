@@ -16,8 +16,8 @@ namespace CF.Report.API.Configurations
                 swaggerOptions.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Cash Flow  API",
-                    Description = "An API responsible for all functionality related to authentication, authorization and user management.",
+                    Title = "Cash Flow Report API",
+                    Description = "An API responsible for all functionality related to reports.",
                     Contact = new OpenApiContact
                     {
                         Name = "Pietro Romano",

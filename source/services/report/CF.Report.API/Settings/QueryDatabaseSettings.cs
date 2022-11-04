@@ -1,15 +1,15 @@
 ﻿namespace CF.Report.API.Settings
 {
-    public class RelationalDatabaseSettings
+    public class QueryDatabaseSettings
     {
         public string ConnectionString { get; set; }
 
-        public RelationalDatabaseSettings()
+        public QueryDatabaseSettings()
         {
 
         }
 
-        public RelationalDatabaseSettings(string connectionString)
+        public QueryDatabaseSettings(string connectionString)
         {
             ConnectionString = connectionString;
         }

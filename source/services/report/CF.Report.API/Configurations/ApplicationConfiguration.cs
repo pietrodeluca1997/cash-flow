@@ -7,11 +7,11 @@ namespace CF.Report.API.Configurations
 {
     public static class ApplicationConfiguration
     {
-        public static void AddRelationalDatabase(this IServiceCollection services, IConfiguration configuration)
+        public static void AddQueryDatabase(this IServiceCollection services, IConfiguration configuration)
         {
             //services.AddScoped<IRepositoryManager, RepositoryManager>();
-            RelationalDatabaseSettings relationalDatabaseSettings = configuration.GetSection("RelationalDatabaseSettings")
-                                                                                 .Get<RelationalDatabaseSettings>();
+            QueryDatabaseSettings relationalDatabaseSettings = configuration.GetSection("QueryDatabaseSettings")
+                                                                            .Get<QueryDatabaseSettings>();
 
             //services.AddDbContext<ReportDbContext>(options => options.UseNpgsql(relationalDatabaseSettings.ConnectionString));
         }
@@ -38,7 +38,7 @@ namespace CF.Report.API.Configurations
 
         public static void AddApplicationSettings(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<RelationalDatabaseSettings>(options => configuration.GetSection("RelationalDatabaseSettings").Bind(options));
+            services.Configure<QueryDatabaseSettings>(options => configuration.GetSection("RelationalDatabaseSettings").Bind(options));
         }
 
         public static void AddApplicationServices(this IServiceCollection services)

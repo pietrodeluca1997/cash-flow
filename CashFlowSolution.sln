@@ -42,15 +42,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "report", "report", "{1A109E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Account.API", "source\services\account\CF.Account.API\CF.Account.API.csproj", "{D8C93CF1-DCDA-403F-B43D-2C22E4355BAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Transactions.API", "source\services\transactions\CF.Transactions.API\CF.Transactions.API.csproj", "{BB4115BE-DFD1-4977-8A7D-0A84C42BA105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Transactions.API", "source\services\transactions\CF.Transactions.API\CF.Transactions.API.csproj", "{BB4115BE-DFD1-4977-8A7D-0A84C42BA105}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Transactions.Domain", "source\services\transactions\CF.Transactions.Domain\CF.Transactions.Domain.csproj", "{F6E5AA90-5238-4480-B882-CE53482A1388}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Transactions.Infrastructure", "source\services\transactions\CF.Transactions.Infrastructure\CF.Transactions.Infrastructure.csproj", "{55132E4A-C3E2-4625-A5ED-F28F9A38415F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Report.API", "source\services\report\CF.Report.API\CF.Report.API.csproj", "{436C30EE-481D-4666-9F68-B9282D3EC33F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.Report.API", "source\services\report\CF.Report.API\CF.Report.API.csproj", "{436C30EE-481D-4666-9F68-B9282D3EC33F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{0A0F4B2F-F01C-48C2-A3F5-9580CD5361FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{5192135A-B204-4719-BD2B-1C4EE7CFE59E}"
+	ProjectSection(SolutionItems) = preProject
+		documents\Cash Flow Solution Architecture.drawio.png = documents\Cash Flow Solution Architecture.drawio.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,14 +87,6 @@ Global
 		{BB4115BE-DFD1-4977-8A7D-0A84C42BA105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB4115BE-DFD1-4977-8A7D-0A84C42BA105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB4115BE-DFD1-4977-8A7D-0A84C42BA105}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6E5AA90-5238-4480-B882-CE53482A1388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6E5AA90-5238-4480-B882-CE53482A1388}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6E5AA90-5238-4480-B882-CE53482A1388}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6E5AA90-5238-4480-B882-CE53482A1388}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55132E4A-C3E2-4625-A5ED-F28F9A38415F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55132E4A-C3E2-4625-A5ED-F28F9A38415F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55132E4A-C3E2-4625-A5ED-F28F9A38415F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55132E4A-C3E2-4625-A5ED-F28F9A38415F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{436C30EE-481D-4666-9F68-B9282D3EC33F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{436C30EE-481D-4666-9F68-B9282D3EC33F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{436C30EE-481D-4666-9F68-B9282D3EC33F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -119,8 +112,6 @@ Global
 		{1A109EBC-FD24-4997-97C2-2B1FAE7A5B17} = {DCFB8BDA-53AF-49EC-9152-2AC6D7C35AA9}
 		{D8C93CF1-DCDA-403F-B43D-2C22E4355BAB} = {034DF026-8AED-479E-908F-CF9009A58C18}
 		{BB4115BE-DFD1-4977-8A7D-0A84C42BA105} = {7240995C-FB78-431D-A44C-66A9FB0987FF}
-		{F6E5AA90-5238-4480-B882-CE53482A1388} = {7240995C-FB78-431D-A44C-66A9FB0987FF}
-		{55132E4A-C3E2-4625-A5ED-F28F9A38415F} = {7240995C-FB78-431D-A44C-66A9FB0987FF}
 		{436C30EE-481D-4666-9F68-B9282D3EC33F} = {1A109EBC-FD24-4997-97C2-2B1FAE7A5B17}
 		{0A0F4B2F-F01C-48C2-A3F5-9580CD5361FD} = {DCFB8BDA-53AF-49EC-9152-2AC6D7C35AA9}
 	EndGlobalSection

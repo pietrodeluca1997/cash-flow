@@ -19,7 +19,7 @@ appBuilder.Services.AddMediator(typeof(Program));
 appBuilder.Services.AddAutoMapper(typeof(Program));
 appBuilder.Services.AddEndpointsApiExplorer();
 appBuilder.Services.AddSwagger();
-appBuilder.Services.AddRelationalDatabase(appBuilder.Configuration);
+appBuilder.Services.AddQueryDatabase(appBuilder.Configuration);
 appBuilder.Services.AddApplicationSettings(appBuilder.Configuration);
 appBuilder.Services.AddApplicationServices();
 appBuilder.Services.AddMessageBroker(appBuilder.Configuration);
