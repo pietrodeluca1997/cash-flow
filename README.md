@@ -23,9 +23,14 @@ Todas as aplicações foram desenvolvidas em **.NET Core 6.0** e rodam dentro de
 
 ## Serviços:
 * [RabbitMQ](https://www.rabbitmq.com/) - Comunicação assíncrona entre as aplicações;
+  • Eventos: 
+    * Quando um usuário é criado na API de identidade, a API de contas recebe uma mensagem e verifica a viabilidade de criar um gerente de conta.
+    * Caso a criação de um gerente de conta não aconteça (Caso de CPF duplicado), a API de identidade é notificada e remove o acesso a plataforma do usuário em questão.
+    * Toda vez que uma transação é solicitada (tanto débito quanto crédito) através da API de transações, a API de contas recebe a notificação e verifica se é possível ou não o ajuste ser realizado na conta.
+    * Após o término da operação da transação a API de contas informa a conclusão da operação, e caso seja de sucesso a API de relatórios recebe uma notificação para que ela armazene essa movimentação e que viabilize uma consulta futura ao extrato da conta.
 * [MongoDB](https://www.mongodb.com/) - Extrato (Relatório de transações sincronizados com a base relacional através do padrão CQRS);
 * [PostgreSQL](https://www.postgresql.org/) - Usuários / Transações / Contas / Gerentes de Conta;
-* [Redis](https://redis.com/) - Cache distribuído em motivo da concorrência de dados entre transações e conta em caso de mais do que uma máquina executando o projeto;
+* [Redis](https://redis.com/) - Cache distribuído utilizado em motivo da concorrência de dados entre transações e conta, em cenários onde há mais do que uma máquina executando a mesma API (Auto Scaling por exemplo) e efetuando transações na mesma conta.
 
 
 ## Bibliotecas:
