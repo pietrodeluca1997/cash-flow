@@ -23,7 +23,7 @@ Todas as aplicações foram desenvolvidas em **.NET Core 6.0** e rodam dentro de
 
 ## Serviços:
 * [RabbitMQ](https://www.rabbitmq.com/) - Comunicação assíncrona entre as aplicações;
-  • Eventos: 
+  * Eventos: 
     * Quando um usuário é criado na API de identidade, a API de contas recebe uma mensagem e verifica a viabilidade de criar um gerente de conta.
     * Caso a criação de um gerente de conta não aconteça (Caso de CPF duplicado), a API de identidade é notificada e remove o acesso a plataforma do usuário em questão.
     * Toda vez que uma transação é solicitada (tanto débito quanto crédito) através da API de transações, a API de contas recebe a notificação e verifica se é possível ou não o ajuste ser realizado na conta.
@@ -51,8 +51,8 @@ docker-compose -f docker-compose.yml up
 ```
 
 ## Etapa 2 -: Migrations
-Certifique-se que ao rodar a Migration através do Visual Studio, o projeto em questão esteja selecionado na janela do console do gerenciador de pacotes e como projeto padrão na área de execução.
-* Execute os seguintes comandos na janela do console do gerenciador:
+Certifique-se antes de executar a Migration através do Visual Studio, que o projeto em questão esteja selecionado na janela do console do gerenciador de pacotes e como projeto padrão na área de execução.
+* Em seguida execute os seguintes comandos na janela do console do gerenciador de pacotes:
 
 * Migration da API de Identidade
 ```powershell
