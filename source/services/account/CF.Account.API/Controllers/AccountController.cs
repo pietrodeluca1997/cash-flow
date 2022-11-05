@@ -1,5 +1,6 @@
 ﻿using CF.Account.API.Contracts.Services;
 using CF.Core.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CF.Account.API.Controllers
@@ -8,6 +9,7 @@ namespace CF.Account.API.Controllers
     [ApiController]
     [ApiExplorerSettings(GroupName = "v1")]
     [Produces("application/json")]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly IAccountServices _accountServices;

@@ -1,5 +1,6 @@
 ﻿using CF.Identity.API.Data.RelationalDatabase;
 using CF.Identity.API.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -29,11 +30,11 @@ namespace CF.Identity.API.Configuration
             JwtAuthenticationSettings authSettings = configuration.GetSection("JwtAuthenticationSettings").Get<JwtAuthenticationSettings>();
             services.AddAuthentication(authOptions =>
             {
-                authOptions.DefaultAuthenticateScheme = "Bearer";
-                authOptions.DefaultChallengeScheme = "Bearer";
+                authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(bearerOptions =>
             {
-                bearerOptions.RequireHttpsMetadata = true;
+                bearerOptions.RequireHttpsMetadata = false;
                 bearerOptions.SaveToken = true;
                 bearerOptions.TokenValidationParameters = new TokenValidationParameters
                 {

@@ -53,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{
 		documents\Cash Flow Solution Architecture.drawio.png = documents\Cash Flow Solution Architecture.drawio.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.APIGateway", "source\services\gateway\CF.APIGateway\CF.APIGateway.csproj", "{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{436C30EE-481D-4666-9F68-B9282D3EC33F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{436C30EE-481D-4666-9F68-B9282D3EC33F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{436C30EE-481D-4666-9F68-B9282D3EC33F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +120,7 @@ Global
 		{BB4115BE-DFD1-4977-8A7D-0A84C42BA105} = {7240995C-FB78-431D-A44C-66A9FB0987FF}
 		{436C30EE-481D-4666-9F68-B9282D3EC33F} = {1A109EBC-FD24-4997-97C2-2B1FAE7A5B17}
 		{0A0F4B2F-F01C-48C2-A3F5-9580CD5361FD} = {DCFB8BDA-53AF-49EC-9152-2AC6D7C35AA9}
+		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D} = {0A0F4B2F-F01C-48C2-A3F5-9580CD5361FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8BEFEEAB-B0F6-425B-B6A8-78C82D2477D2}

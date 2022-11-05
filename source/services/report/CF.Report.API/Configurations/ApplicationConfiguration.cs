@@ -5,19 +5,14 @@ using CF.Report.API.Data.QueryDatabase;
 using CF.Report.API.EventBusConsumers;
 using CF.Report.API.Settings;
 using MassTransit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace CF.Report.API.Configurations
 {
     public static class ApplicationConfiguration
     {
-        public static void AddQueryDatabase(this IServiceCollection services, IConfiguration configuration)
-        {
-            //services.AddScoped<IRepositoryManager, RepositoryManager>();
-            QueryDatabaseSettings relationalDatabaseSettings = configuration.GetSection("QueryDatabaseSettings")
-                                                                            .Get<QueryDatabaseSettings>();
-
-            //services.AddDbContext<ReportDbContext>(options => options.UseNpgsql(relationalDatabaseSettings.ConnectionString));
-        }
 
         /// <summary>
         ///     Add listener/consumers for message broker
@@ -79,6 +74,30 @@ namespace CF.Report.API.Configurations
         public static void AddQueryDatabase(this IServiceCollection services)
         {
             services.AddScoped(typeof(IQueryBaseRepository<>), typeof(QueryDatabaseBaseRepository<>));
+        }
+
+        public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            JwtAuthenticationSettings authSettings = configuration.GetSection("JwtAuthenticationSettings").Get<JwtAuthenticationSettings>();
+            services.AddAuthentication(authOptions =>
+            {
+                authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(bearerOptions =>
+            {
+                bearerOptions.RequireHttpsMetadata = false;
+                bearerOptions.SaveToken = true;
+                bearerOptions.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(authSettings.SecretKey)),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidIssuer = authSettings.Issuer,
+                    ValidAudience = authSettings.Audience,
+                    RequireExpirationTime = true
+                };
+            });
         }
     }
 }

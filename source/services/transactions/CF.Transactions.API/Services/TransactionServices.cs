@@ -1,20 +1,25 @@
-﻿using CF.Core.DTO;
+﻿using CF.Core.DomainObjects;
+using CF.Core.DTO;
+using CF.Core.Helpers;
 using CF.Core.Messages.IntegrationEvents;
 using CF.CustomMediator.Contracts;
 using CF.Transactions.API.Contracts.Services;
 using CF.Transactions.API.DTO.Request;
 using CF.Transactions.API.Entities;
 using System.Net;
+using System.Security.Claims;
 
 namespace CF.Transactions.API.Services
 {
     public class TransactionServices : ITransactionServices
     {
         private readonly IMediator _mediator;
+        private readonly RequestHandler _requestHandler;
 
-        public TransactionServices(IMediator mediator)
+        public TransactionServices(IMediator mediator, RequestHandler requestHandler)
         {
             _mediator = mediator;
+            _requestHandler = requestHandler;
         }
 
         public async Task<BaseResponseDTO> Credit(CreateNewTransactionRequestDTO createTransactionRequestDTO)
@@ -30,12 +35,16 @@ namespace CF.Transactions.API.Services
                     return responseDTO;
                 }
 
+                string authorizationHeader = _requestHandler.GetHeaderValue("Authorization");
+
+                User user = JwtHelper.RetrieveUserData(authorizationHeader.Replace("Bearer ", ""));
+
                 CreditTransactionRequestedEvent @event = new()
                 {
                     Description = createTransactionRequestDTO.Description,
                     MoneyAmount = createTransactionRequestDTO.MoneyAmount,
-                    //Adjust for authentication
-                    UserId = Guid.Empty
+                    Email = user.Email,
+                    UserId = user.UserId
                 };
 
                 await _mediator.Notify(@event);
@@ -63,12 +72,16 @@ namespace CF.Transactions.API.Services
                     return responseDTO;
                 }
 
+                string authorizationHeader = _requestHandler.GetHeaderValue("Authorization");
+
+                User user = JwtHelper.RetrieveUserData(authorizationHeader.Replace("Bearer ", ""));
+
                 DebitTransactionRequestedEvent @event = new()
                 {
                     Description = createTransactionRequestDTO.Description,
                     MoneyAmount = createTransactionRequestDTO.MoneyAmount,
-                    //Adjust for authentication
-                    UserId = Guid.Empty
+                    Email = user.Email,
+                    UserId = user.UserId                   
                 };
 
                 await _mediator.Notify(@event);

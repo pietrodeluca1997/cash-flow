@@ -40,7 +40,7 @@ namespace CF.Account.API.Commands.AccountCommands
                     {
                         TransactionAmount = requestMessage.MoneyAmount,
                         UserId = requestMessage.UserId,
-                        UserName = string.Empty,
+                        Email = requestMessage.Email,
                         TransactionDescription = requestMessage.Description
                     };
 
@@ -65,7 +65,7 @@ namespace CF.Account.API.Commands.AccountCommands
                 {
                     TransactionAmount = requestMessage.MoneyAmount,
                     UserId = requestMessage.UserId,
-                    UserName = string.Empty,
+                    Email = requestMessage.Email,
                     TransactionDescription = requestMessage.Description
                 };
 

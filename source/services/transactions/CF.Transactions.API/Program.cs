@@ -23,6 +23,18 @@ appBuilder.Services.AddRelationalDatabase(appBuilder.Configuration);
 appBuilder.Services.AddApplicationSettings(appBuilder.Configuration);
 appBuilder.Services.AddApplicationServices();
 appBuilder.Services.AddMessageBroker(appBuilder.Configuration);
+appBuilder.Services.AddJwtAuthentication(appBuilder.Configuration);
+appBuilder.Services.AddRequestHandler();
+appBuilder.Services.AddHttpContextAccessor();
+appBuilder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAny",
+        builder =>
+            builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+});
 
 WebApplication app = appBuilder.Build();
 
@@ -31,8 +43,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerDocumentation();
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
 
+app.UseCors("AllowAny");
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

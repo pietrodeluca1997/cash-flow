@@ -1,6 +1,7 @@
 ﻿using CF.Core.DTO;
 using CF.Transactions.API.Contracts.Services;
 using CF.Transactions.API.DTO.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CF.Transactions.API.Controllers
@@ -9,6 +10,7 @@ namespace CF.Transactions.API.Controllers
     [ApiController]
     [ApiExplorerSettings(GroupName = "v1")]
     [Produces("application/json")]
+    [Authorize]
     public class TransactionController : ControllerBase
     {
         private readonly ITransactionServices _transactionServices;
@@ -17,7 +19,6 @@ namespace CF.Transactions.API.Controllers
         {
             _transactionServices = transactionServices;
         }
-
 
         /// <summary>
         /// Receives a new debit transaction for further processment.
