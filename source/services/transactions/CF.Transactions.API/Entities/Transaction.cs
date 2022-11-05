@@ -21,6 +21,12 @@ namespace CF.Transactions.API.Entities
             if (moneyAmount.IsNullOrNeutral())
             {
                 validationErrors.Add("Money amount should be informed and cannot be null or equals to zero");
+                return false;
+            }
+
+            if (moneyAmount < 0)
+            {
+                validationErrors.Add("Money should be a positive value");
             }
 
             return !validationErrors.Any();

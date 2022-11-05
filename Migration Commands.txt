@@ -1,0 +1,2 @@
+Update-Database -StartUpProject CF.Identity.API
+Update-Database -StartUpProject CF.Account.API

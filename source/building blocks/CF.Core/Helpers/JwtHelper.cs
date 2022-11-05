@@ -1,6 +1,5 @@
 ﻿using CF.Core.DomainObjects;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 
 namespace CF.Core.Helpers
 {

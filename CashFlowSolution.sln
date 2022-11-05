@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{B6A12DF8-0C0E-46F5-8005-9C9E3E26421B}"
 	ProjectSection(SolutionItems) = preProject
 		deployment\docker\docker-compose.yml = deployment\docker\docker-compose.yml
+		Migration Commands.txt = Migration Commands.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{DCFB8BDA-53AF-49EC-9152-2AC6D7C35AA9}"
@@ -53,7 +54,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{
 		documents\Cash Flow Solution Architecture.drawio.png = documents\Cash Flow Solution Architecture.drawio.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.APIGateway", "source\services\gateway\CF.APIGateway\CF.APIGateway.csproj", "{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.APIGateway", "source\services\gateway\CF.APIGateway\CF.APIGateway.csproj", "{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

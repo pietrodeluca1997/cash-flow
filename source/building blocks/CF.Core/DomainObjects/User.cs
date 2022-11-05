@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CF.Core.DomainObjects
+﻿namespace CF.Core.DomainObjects
 {
     public class User
     {

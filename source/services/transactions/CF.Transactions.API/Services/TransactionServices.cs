@@ -7,7 +7,6 @@ using CF.Transactions.API.Contracts.Services;
 using CF.Transactions.API.DTO.Request;
 using CF.Transactions.API.Entities;
 using System.Net;
-using System.Security.Claims;
 
 namespace CF.Transactions.API.Services
 {
@@ -81,7 +80,7 @@ namespace CF.Transactions.API.Services
                     Description = createTransactionRequestDTO.Description,
                     MoneyAmount = createTransactionRequestDTO.MoneyAmount,
                     Email = user.Email,
-                    UserId = user.UserId                   
+                    UserId = user.UserId
                 };
 
                 await _mediator.Notify(@event);

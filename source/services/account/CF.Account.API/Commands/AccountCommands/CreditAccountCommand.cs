@@ -5,7 +5,7 @@ namespace CF.Account.API.Commands.AccountCommands
     public class CreditAccountCommand : Command
     {
         public Guid UserId { get; set; }
-        public string Email{ get; set; }
+        public string Email { get; set; }
         public decimal MoneyAmount { get; set; }
         public string Description { get; set; }
 

@@ -50,17 +50,84 @@ services:
     ports:
       - "6379:6379"
 
-  #identity-api:
-  #  image: "pietrodeluca1997/cash-flow-identity-api:latest"
-  #  container_name: "cash-flow-identity-api-container"
-  #  build:
-  #      context: "../../"
-  #      dockerfile: "./source/services/identity/CF.Identity.API/Dockerfile"
-  #  environment:
-  #      - ASPNETCORE_ENVIRONMENT=Production
-  #      - ASPNETCORE_URLS=http://*:5001
-  #  ports:
-  #      - "5001:5001"
-  #  depends_on:
-  #      - postgreSQL
-  #      - rabbitmq
+  gateway-api:
+    image: "pietrodeluca1997/cash-flow-gateway-api:latest"
+    container_name: "cash-flow-gateway-api-container"
+    build:
+        context: "../../"
+        dockerfile: "./source/services/gateway/CF.APIGateway/Dockerfile"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_URLS=http://*:5000
+    ports:
+        - "5000:5000"
+
+  identity-api:
+    image: "pietrodeluca1997/cash-flow-identity-api:latest"
+    container_name: "cash-flow-identity-api-container"
+    build:
+        context: "../../"
+        dockerfile: "./source/services/identity/CF.Identity.API/Dockerfile"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_URLS=http://*:5004
+    #ports:
+    #    - "5004:5004"
+    depends_on:
+        - postgreSQL
+        - rabbitmq
+        - gateway-api
+
+  account-api:
+    image: "pietrodeluca1997/cash-flow-account-api:latest"
+    container_name: "cash-flow-account-api-container"
+    build:
+        context: "../../"
+        dockerfile: "./source/services/account/CF.Account.API/Dockerfile"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_URLS=http://*:5003
+    #ports:
+    #    - "5003:5003"
+    depends_on:
+        - postgreSQL
+        - rabbitmq
+        - redis
+        - identity-api
+        - gateway-api
+
+  transactions-api:
+    image: "pietrodeluca1997/cash-flow-transactions-api:latest"
+    container_name: "cash-flow-transaction-api-container"
+    build:
+        context: "../../"
+        dockerfile: "./source/services/transactions/CF.Transactions.API/Dockerfile"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_URLS=http://*:5002
+    #ports:
+    #    - "5002:5002"
+    depends_on:
+        - postgreSQL
+        - rabbitmq
+        - identity-api
+        - account-api
+        - gateway-api
+
+  report-api:
+    image: "pietrodeluca1997/cash-flow-report-api:latest"
+    container_name: "cash-flow-report-api-container"
+    build:
+        context: "../../"
+        dockerfile: "./source/services/report/CF.Report.API/Dockerfile"
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - ASPNETCORE_URLS=http://*:5001
+    #ports:
+    #    - "5001:5001"
+    depends_on:
+        - mongo
+        - rabbitmq
+        - identity-api
+        - transactions-api
+        - gateway-api
