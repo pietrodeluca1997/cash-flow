@@ -16,7 +16,7 @@ Todas as aplicações foram desenvolvidas em **.NET Core 6.0** e rodam dentro de
 ## Aplicações:
 * API de Identidade - Autenticação e gerenciamento de usuários;
 * API de Contas - Gerenciamento de contas e de gerentes de conta;
-* API de Transações - Efetuar movimentações financeiras em uma conta;
+* API de Transações - Solicitar movimentações financeiras em uma conta;
 * API de Relatórios - Disponibilização de relatórios;
 * API de Encaminhamento de Tráfego - Responsável pelo recebimento de todas as requisições e pelo encaminhamento aos serviços responsáveis;
 
