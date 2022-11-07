@@ -13,7 +13,7 @@ namespace CF.Domain.Tests
 
             Account.API.Entities.Account account = new(initialValue);
 
-            Assert.Equal(initialValue, initialValue);
+            Assert.Equal(account.MoneyAmount, initialValue);
         }
 
         [Fact(DisplayName = "Create an account with zero amount of money")]
@@ -24,7 +24,7 @@ namespace CF.Domain.Tests
 
             Account.API.Entities.Account account = new(initialValue);
 
-            Assert.Equal(initialValue, initialValue);
+            Assert.Equal(account.MoneyAmount, initialValue);
         }
 
         [Fact(DisplayName = "Create an account with invalid amount of money")]
@@ -52,7 +52,7 @@ namespace CF.Domain.Tests
             Assert.Equal(account.MoneyAmount, initialValue + creditValue);
         }
 
-        [Fact(DisplayName = "Add invalid credit amount into an account")]
+        [Fact(DisplayName = "Try to add invalid credit amount into an account")]
         [Trait("Category", "Account Credit")]
         public void Account_InvalidAmountOfCredit_ShouldNotCredit()
         {
@@ -61,14 +61,13 @@ namespace CF.Domain.Tests
 
             Account.API.Entities.Account account = new(initialValue);
 
-            account.Credit(creditValue);
+            bool wasSuccesful = account.Credit(creditValue);
 
-            Assert.Equal(account.MoneyAmount, account.MoneyAmount);
+            Assert.True(!wasSuccesful);
         }
 
-
         [Fact(DisplayName = "Remove valid debit amount from an account")]
-        [Trait("Category", "Account Credit")]
+        [Trait("Category", "Account Debit")]
         public void Account_ValidAmountOfDebit_ShouldDebitWithSuccess()
         {
             decimal initialValue = 200m;
@@ -79,6 +78,20 @@ namespace CF.Domain.Tests
             account.Debit(debitValue);
 
             Assert.Equal(account.MoneyAmount, initialValue - debitValue);
+        }
+
+        [Fact(DisplayName = "Try to remove debit amount from an account bigger than available")]
+        [Trait("Category", "Account Debit")]
+        public void Account_AmountOfDebitMoreThanAvailable_ShouldNotDebit()
+        {
+            decimal initialValue = 200m;
+            decimal debitValue = 400m;
+
+            Account.API.Entities.Account account = new(initialValue);
+
+            bool wasSuccesful = account.Debit(debitValue);
+
+            Assert.True(!wasSuccesful);
         }
     }
 }
