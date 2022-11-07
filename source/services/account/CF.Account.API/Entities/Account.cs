@@ -5,9 +5,21 @@ namespace CF.Account.API.Entities
     public class Account : Entity
     {
         public decimal MoneyAmount { get; set; }
+
+        //EF Core
         public Account()
         {
             UniqueIdentifier = Guid.NewGuid();
+        }
+
+        public Account(decimal moneyAmount)
+        {
+            if(moneyAmount < 0)
+            {
+                throw new ArgumentException("To open an account money amount should be zero or bigger");
+            }
+
+            MoneyAmount = moneyAmount;
         }
 
         public bool Credit(decimal creditValue)

@@ -56,6 +56,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documents", "documents", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CF.APIGateway", "source\services\gateway\CF.APIGateway\CF.APIGateway.csproj", "{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "domain tests", "domain tests", "{0A57D412-8993-4179-A8B6-A611F597861B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CF.Domain.Tests", "tests\domain tests\CF.Domain.Tests\CF.Domain.Tests.csproj", "{7AC01787-8E32-471C-BE71-1F551EAFC5FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +102,10 @@ Global
 		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC01787-8E32-471C-BE71-1F551EAFC5FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC01787-8E32-471C-BE71-1F551EAFC5FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC01787-8E32-471C-BE71-1F551EAFC5FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC01787-8E32-471C-BE71-1F551EAFC5FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,6 +130,8 @@ Global
 		{436C30EE-481D-4666-9F68-B9282D3EC33F} = {1A109EBC-FD24-4997-97C2-2B1FAE7A5B17}
 		{0A0F4B2F-F01C-48C2-A3F5-9580CD5361FD} = {DCFB8BDA-53AF-49EC-9152-2AC6D7C35AA9}
 		{1BE5F69E-BF0C-4325-AABB-CA2120BB8C7D} = {0A0F4B2F-F01C-48C2-A3F5-9580CD5361FD}
+		{0A57D412-8993-4179-A8B6-A611F597861B} = {BAA5F05C-E423-4FE3-90DD-DC591BFAB580}
+		{7AC01787-8E32-471C-BE71-1F551EAFC5FD} = {0A57D412-8993-4179-A8B6-A611F597861B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8BEFEEAB-B0F6-425B-B6A8-78C82D2477D2}
